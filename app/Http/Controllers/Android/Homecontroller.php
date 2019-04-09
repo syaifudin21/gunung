@@ -28,4 +28,15 @@ class Homecontroller extends Controller
             'berita' => GunungResource::collection($berita)
         ], 200);
     }
+    public function berita()
+    {
+        $beritas = Berita::where('publish', 'Public')->select('id','judul','text_pembuka')->orderBy('id', 'DESC')->paginate();
+        return $beritas;
+    }
+
+    public function gunung()
+    {
+        $gunungs = Gunung::where('publish', 'Public')->select('id','nama','thumbnail', 'alamat')->get();
+        return GunungResource::collection($gunungs);
+    }
 }

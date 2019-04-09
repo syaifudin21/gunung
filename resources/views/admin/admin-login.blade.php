@@ -35,7 +35,7 @@
         @else
         <form class="login-form" method="post" action="{{route('admin.login')}}">
           @csrf
-          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>Login Admin</h3>
+          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>Login Ucssser Admin</h3>
           <div class="form-group">
             <label class="control-label">Username</label>
             <input class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" type="text" placeholder="Email" name="username" autofocus value="{{old('username')}}">

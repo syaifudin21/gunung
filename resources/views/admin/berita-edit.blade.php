@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="lampiran" class="col-sm-2 col-form-label">Lampiran</label>
+                                <label for="lampiran" class="col-sm-2 col-form-label">Gambar</label>
                                 <div class="col-sm-10">
                                     <input type="file" class="form-control" onchange="fotoURl(this)" name="lampiran" id="staticEmail" >
                                     @if ($errors->has('lampiran'))

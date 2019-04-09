@@ -1,89 +1,47 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE HTML>
+<!--
+	Aerial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+    <title>{{env('APP_NAME')}}</title>
+    <link rel="icon" href="{{asset(env('APP_LOGO'))}}">
+    <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{asset('assetsFront/css/main.css')}}" />
+		<noscript><link rel="stylesheet" href="{{asset('assetsFront/css/noscript.css')}}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<div id="wrapper">
+			<div id="bg"></div>
+			<div id="overlay"></div>
+			<div id="main">
 
-        <title>Laravel</title>
+				<!-- Header -->
+					<header id="header">
+						<h1>Ensiklopedia Gunung</h1>
+						<p>Aplikasi Informasi Gunung Aktif yang Ada Diindonesia</p>
+						<nav>
+							<ul>
+								<li><a href="#" class="icon fa-mobile-phone"><span class="label">Aplikasi Android</span></a></li>
+								<li><a href="{{url('/admin')}}" class="icon fa-sign-out"><span class="label">Admin</span></a></li>
+							</ul>
+						</nav>
+					</header>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+				<!-- Footer -->
+					<footer id="footer">
+						{{-- <span class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>.</span> --}}
+					</footer>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/admin') }}">Home</a>
-                    @else
-                        <a href="{{ route('admin') }}">Login</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Gunung Indonesia
-                </div>
-                <p>Alam akan memberikan kenyaman berbading lurus dengan kepedihan</p>
-
-                <a href="{{ url('/admin') }}">Portal Admin</a>
-
-            </div>
-        </div>
-    </body>
+			</div>
+		</div>
+		<script>
+			window.onload = function() { document.body.classList.remove('is-preload'); }
+			window.ontouchmove = function() { return false; }
+			window.onorientationchange = function() { document.body.scrollTop = 0; }
+		</script>
+	</body>
 </html>
