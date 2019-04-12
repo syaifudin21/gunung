@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Berita;
 use App\Models\Gunung;
 use App\Http\Resources\GunungResource ;
+use DB;
+
 
 class Homecontroller extends Controller
 {
@@ -19,24 +21,44 @@ class Homecontroller extends Controller
             'gunung' => GunungResource::collection($gunungs)
         ], 200);
     }
-    public function gunungid($id)
-    {
-        $gunung = Gunung::find($id);
-        $berita = Berita::where(['gunung_id'=> $id, 'publish'=> 'Public'])->get();
-        return response([
-            'gunung' => $gunung,
-            'berita' => GunungResource::collection($berita)
-        ], 200);
-    }
+
     public function berita()
     {
-        $beritas = Berita::where('publish', 'Public')->select('id','judul','text_pembuka')->orderBy('id', 'DESC')->paginate();
+        $beritas = Berita::where('beritas.publish', 'Public')
+                    ->join('gunungs', 'beritas.gunung_id', '=', 'gunungs.id')
+                    ->select('gunungs.nama as gunung', 'gunungs.alamat', 'beritas.*')
+                    ->orderBy('id', 'DESC')
+                    ->get();
         return $beritas;
     }
 
     public function gunung()
     {
-        $gunungs = Gunung::where('publish', 'Public')->select('id','nama','thumbnail', 'alamat')->get();
-        return GunungResource::collection($gunungs);
+        $gunungs = Gunung::where('publish', 'Public')
+                    ->select('id','nama','thumbnail', 'alamat', 'status', 'thumbnail')
+                    ->get();
+        return $gunungs;
     }
+
+    public function beritaid($id)
+    {
+        $berita = Berita::findOrFail($id);
+        return $berita;
+    }
+    public function gunungid($id)
+    {
+        $gunung = Gunung::findOrFail($id);
+        return $gunung;
+    }
+    public function viewberita($id)
+    {
+        $berita = Berita::findOrFail($id);
+        return view('android.beritaid', compact('berita'));
+    }
+    public function viewgunung($id)
+    {
+        $gunung = Gunung::findOrFail($id);
+        return view('android.gunungid', compact('gunung'));
+    }
+
 }

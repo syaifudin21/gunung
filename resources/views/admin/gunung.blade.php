@@ -30,6 +30,7 @@
                             <tr>
                                 <th>Nama Gunung</th>
                                 <th class="text-center">Status</th>
+                                <th class="text-center">Publish</th>
                                 <th class="text-center">Berita</th>
                                 <th></th>
                             </tr>
@@ -39,6 +40,7 @@
                             <tr>
                                 <td><b>{{$gunung->nama}}</b></td>
                                 <td class="text-center">{{$gunung->status}}</td>
+                                <td class="text-center">{{$gunung->publish}}</td>
                                 <td class="text-center">{{$gunung->berita()->count()}}</td>
                                 <td class="text-center">
                                     <a class="btn btn-secondary btn-sm" href="{{route('admin.gunung.show', ['id'=> $gunung->id])}}">Detail</a>

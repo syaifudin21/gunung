@@ -17,3 +17,6 @@ Route::get('/', function () {
 Route::post('/upload/gambar', 'ImagesController@upload')->name('upload.gambar');
 Route::post('/galeri/store', 'ImagesController@store')->name('galeri.store');
 Route::delete('/galeri/delete/{id}', 'ImagesController@delete')->name('galeri.delete');
+
+Route::get('/berita/{id}', 'Android\HomeController@viewberita');
+Route::get('/gunung/{id}', 'Android\HomeController@viewgunung');
