@@ -37,32 +37,32 @@
                                     </a>
                                     </div>
                         </div>
-                        {!!$gunung->deskripsi!!}
-
-                <div style="position: relative; bottom: 0px; padding-bottom: 100px">
-                    <hr>
-                        <small> Terakhir diupdate {{hari_tanggal_waktu($gunung->updated_at, true)}}</small>
-                </div>
-
-                @if ($gunung->berita()->count()!=0)
-                <div class="row justify-content-md-center">
-                    <div class="col-md-9 col-sm-12">
-                        <h4>Berita Terkait Gunung</h4><hr>
-                        @foreach ($gunung->berita()->orderBy('id', 'DESC')->get() as $berita)
-                        <div class="media">
-                        <img src="{{asset($berita->lampiran)}}" class="leading mr-3" alt="...">
-                        <div class="media-body">
-                        <a href="{{url('berita/'.$berita->id)}}"><h5 class="mt-0" style="margin-bottom: 0px">{{$berita->judul}}</h5></a>
-                            <small style="font-size: 60%">{{hari_tanggal_waktu($berita->created_at, true)}}</small> <br>
-                            <small>{{$berita->text_pembuka}}</small>
-                        </div>
-                        </div>
-                        <br>
-                        @endforeach
-                    </div>
-                </div>
-                @endif
             </div>
+            <div class="col-md-9 col-sm-12"  style="min-height: 400px">
+                {!!$gunung->deskripsi!!}
+            </div>
+            <div class="col-md-9 col-sm-12">
+                    <div style="position: relative; bottom: 0px; padding-bottom: 25px">
+                <hr>
+                    <small> Terakhir diupdate {{hari_tanggal_waktu($gunung->updated_at, true)}}</small>
+                </div>
+            </div>
+            @if ($gunung->berita()->count()!=0)
+                <div class="col-md-9 col-sm-12" style="margin-top: 100px">
+                    <h4>Berita Terkait Gunung</h4><hr>
+                    @foreach ($gunung->berita()->orderBy('id', 'DESC')->get() as $berita)
+                    <div class="media">
+                    <img src="{{asset($berita->lampiran)}}" class="leading mr-3" alt="...">
+                    <div class="media-body">
+                    <a href="{{url('berita/'.$berita->id)}}"><h5 class="mt-0" style="margin-bottom: 0px">{{$berita->judul}}</h5></a>
+                        <small style="font-size: 60%">{{hari_tanggal_waktu($berita->created_at, true)}}</small> <br>
+                        <small>{{$berita->text_pembuka}}</small>
+                    </div>
+                    </div>
+                    <br>
+                    @endforeach
+                </div>
+            @endif
 
         </div>
 
@@ -85,7 +85,7 @@
                 });
                 $('img').each(function () {
                     var src = $(this).attr('src');
-                    var src = src.replace('http://localhost/gunung/', 'http://192.168.1.199/gunung/');
+                    var src = src.replace('http://localhost/gunung/', '{{env("APP_URL")}}');
 
                     $(this).removeAttr("style");
                     $(this).attr('width', '100%')
@@ -93,7 +93,7 @@
                 });
                 $('.leading').each(function () {
                     var src = $(this).attr('src');
-                    var src = src.replace('http://localhost/gunung/', 'http://192.168.1.199/gunung/');
+                    var src = src.replace('http://localhost/gunung/', '{{env("APP_URL")}}');
 
                     $(this).removeAttr("style");
                     $(this).attr('width', '90px')

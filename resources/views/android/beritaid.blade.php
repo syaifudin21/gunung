@@ -21,11 +21,15 @@
             </div>
             <img src="{{asset($berita->lampiran)}}" alt="" width="100%" class="rounded">
             <hr>
-                {!!$berita->berita!!}
         </div>
-        <div style="position: absolute; bottom: 0px; padding: 10px">
-            <hr>
-               <small> Terakhir diupdate {{hari_tanggal_waktu($berita->updated_at, true)}}</small>
+    </div>
+    <div class="col-md-9 col-sm-12"  style="min-height: 400px">
+        {!!$berita->berita!!}
+    </div>
+    <div class="col-md-9 col-sm-12">
+            <div style="position: relative; bottom: 0px; padding-bottom: 25px">
+        <hr>
+            <small> Terakhir diupdate {{hari_tanggal_waktu($berita->updated_at, true)}}</small>
         </div>
     </div>
 
@@ -49,7 +53,7 @@
                 });
                 $('img').each(function () {
                     var src = $(this).attr('src');
-                    var src = src.replace('http://localhost/gunung/', 'http://192.168.1.199/gunung/');
+                    var src = src.replace('http://localhost/gunung/', '{{env("APP_URL")}}');
 
                     $(this).removeAttr("style");
                     $(this).attr('width', '100%')
