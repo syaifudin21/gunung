@@ -6,24 +6,19 @@
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1>Gunung Indonesia</h1>
+            <h1>{{env("APP_NAME")}}</h1>
             <p>Informasi deskripsi gunung yang ada di Indonesia</p>
         </div>
-        <ul class="app-breadcrumb breadcrumb">
-            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item"><a href="{{route('admin.gunung')}}">Gunung</a></li>
-        </ul>
+        <div class="btn-group float-right" role="group" aria-label="Basic example">
+            <a class="btn btn-primary mr-1 mb-1 btn-sm" href="{{route('admin.gunung.create')}}">
+                <i class="fa fa-plus"></i>Tambah Gunung</a> 
+        </div>
     </div>
 
     <div class="row">
         <div class="col-md-8">
             <div class="tile">
-                <h3 class="tile-title">Daftar Gunung
-
-                    <div class="btn-group float-right" role="group" aria-label="Basic example">
-                        <a class="btn btn-primary mr-1 mb-1 btn-sm" href="{{route('admin.gunung.create')}}">
-                            <i class="fa fa-plus"></i>Tambah</a> </div>
-                </h3>
+                <h3 class="tile-title">Daftar Gunung</h3>
                 <div class="bs-component">
                     <table class="table table-sm">
                         <thead>
@@ -43,8 +38,10 @@
                                 <td class="text-center">{{$gunung->publish}}</td>
                                 <td class="text-center">{{$gunung->berita()->count()}}</td>
                                 <td class="text-center">
-                                    <a class="btn btn-secondary btn-sm" href="{{route('admin.gunung.show', ['id'=> $gunung->id])}}">Detail</a>
+                                    <a class="btn btn-outline-info btn-sm" href="{{route('admin.gunung.show', ['id'=> $gunung->id])}}">Detail</a>
                                     <a class="btn btn-outline-secondary btn-sm" href="{{route('admin.gunung.edit', ['id'=>$gunung->id])}}">Edit</a>
+                                    <button class="btn btn-outline-danger btn-sm" data-pesan="Apakah kamu yakin ingin menghapu deskripsi gunung {{$gunung->nama}}" data-url="{{route('admin.gunung.delete', ['id'=> $gunung])}}" data-redirect="{{route('admin.gunung')}}" id="hapus">
+                                        Hapus</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -94,4 +91,5 @@
 
 @section('script')
 <script src="{{asset('js/hapus.js')}}"></script>
+<script src="{{asset('js/hapusfunc.js')}}"></script>
 @endsection

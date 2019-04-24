@@ -6,12 +6,13 @@
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1>Berita Gunung Indonesia</h1>
-            <p>Informasi deskripsi gunung yang ada di Indonesia</p>
+            <h1>{{env("APP_NAME")}}</h1>
+            <p>Manajemen Berita</p>
         </div>
-        <div class="btn-group" role="group" aria-label="Basic example">
-                <a class="btn btn-primary mr-1 mb-1 btn-sm" href="{{route('admin.berita.create')}}">
-                    <i class="fa fa-plus"></i>Tambah</a> </div>
+        <div class="btn-group float-right" role="group" aria-label="Basic example">
+            <a class="btn btn-primary mr-1 mb-1 btn-sm" href="{{route('admin.berita.create')}}">
+                <i class="fa fa-plus"></i>Tambah Berita</a> 
+        </div>
     </div>
 
     <div class="row">
@@ -27,7 +28,9 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{$berita->judul}}</h5>
                                         <p class="card-text">{{$berita->text_pembuka}}</p>
-                                    <a href="{{route('admin.berita.show', ['id'=> $berita->id])}}" class="btn btn-danger btn-sm btn-block">Detail</a>
+                                        <a href="{{route('admin.berita.show', ['id'=> $berita->id])}}" class="btn btn-outline-info btn-sm">Detail</a>
+                                        <a href="{{route('admin.berita.edit', ['id'=> $berita->id])}}" class="btn btn-outline-secondary btn-sm">Edit</a>
+                                        <button class="btn btn-outline-danger btn-sm" data-pesan="Apakah kamu yakin ingin menghapu deskripsi berita {{$berita->judul}}" data-url="{{route('admin.berita.delete', ['id'=> $berita->id])}}" data-redirect="{{route('admin.berita')}}" id="hapus">Hapus</button>
                                     </div>
                                 </div>
                             @endforeach
@@ -42,4 +45,5 @@
 
 @section('script')
 <script src="{{asset('js/hapus.js')}}"></script>
+<script src="{{asset('js/hapusfunc.js')}}"></script>
 @endsection
