@@ -22,3 +22,12 @@ Route::post('/berita/tambah', 'Admin\BeritaController@store')->name('admin.berit
 Route::get('/berita/edit/{id}', 'Admin\BeritaController@edit')->name('admin.berita.edit');
 Route::put('/berita/update', 'Admin\BeritaController@update')->name('admin.berita.update');
 Route::delete('/berita/delete/{id}', 'Admin\BeritaController@delete')->name('admin.berita.delete');
+
+Route::get('/user', 'Admin\UserController@index')->name('admin.user');
+Route::get('/user/publish', 'Admin\UserController@publish')->name('admin.user.publish');
+Route::get('/user/tambah', 'Admin\UserController@create')->name('admin.user.create');
+Route::get('/user/show/{id}', 'Admin\UserController@show')->name('admin.user.show');
+Route::post('/user/tambah', 'Admin\UserController@store')->name('admin.user.store');
+Route::get('/user/edit/{id}', 'Admin\UserController@edit')->name('admin.user.edit');
+Route::put('/user/update', 'Admin\UserController@update')->name('admin.user.update');
+Route::delete('/user/delete/{id}', 'Admin\UserController@delete')->name('admin.user.delete');

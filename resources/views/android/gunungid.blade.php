@@ -21,8 +21,11 @@
 
                             <div id="carouselExampleControls" style="height: 200px; overflow: hidden" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
+                                        <div class="carousel-item active" data-interval="100">
+                                            <img src="{{asset($gunung->thumbnail)}}" alt="...">
+                                        </div>
                                         @foreach ($gunung->galeri()->get() as $i => $foto)
-                                            <div class="carousel-item {{$i==0? 'active': $i}}"  data-interval="100">
+                                            <div class="carousel-item"  data-interval="100">
                                                 <img src="{{asset($foto->foto)}}" class="d-block w-100" alt="...">
                                             </div>
                                         @endforeach

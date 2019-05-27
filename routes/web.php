@@ -14,6 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/apk/download', 'ApkController@getDownload');
+
 Route::post('/upload/gambar', 'ImagesController@upload')->name('upload.gambar');
 Route::post('/galeri/store', 'ImagesController@store')->name('galeri.store');
 Route::delete('/galeri/delete/{id}', 'ImagesController@delete')->name('galeri.delete');

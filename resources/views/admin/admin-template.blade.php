@@ -30,10 +30,10 @@
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
         <form action="{{url('invoice.cari')}}" method="post"> @csrf
-        <li class="app-search">
+        {{-- <li class="app-search">
           <input class="app-search__input" type="search" placeholder="Search" name="invoice">
           <button class="app-search__button" type="submit"><i class="fa fa-search"></i></button>
-        </li>
+        </li> --}}
         </form>
         <!-- User Menu-->
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
@@ -65,6 +65,8 @@
         <li><a class="app-menu__item {{(Request::is('admin/gunung') OR \Request::is('admin/gunung/*'))? 'active': ''}}" href="{{route('admin.gunung')}}"><i class="app-menu__icon fa fa-tasks"></i><span class="app-menu__label"> Gunung</span></a></li>
 
         <li><a class="app-menu__item {{(Request::is('admin/berita') OR \Request::is('admin/berita/*'))? 'active': ''}}" href="{{route('admin.berita')}}"><i class="app-menu__icon fa fa-newspaper-o"></i><span class="app-menu__label"> Berita</span></a></li>
+
+        <li><a class="app-menu__item {{(Request::is('admin/user') OR \Request::is('admin/user/*'))? 'active': ''}}" href="{{route('admin.user')}}"><i class="app-menu__icon fa fa-user-circle-o"></i><span class="app-menu__label"> User Admin</span></a></li>
       </ul>
     </aside>
     @yield('content')
