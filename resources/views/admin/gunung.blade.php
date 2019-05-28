@@ -40,8 +40,8 @@
                                 <td class="text-center">
                                     <a class="btn btn-outline-info btn-sm" href="{{route('admin.gunung.show', ['id'=> $gunung->id])}}">Detail</a>
                                     <a class="btn btn-outline-secondary btn-sm" href="{{route('admin.gunung.edit', ['id'=>$gunung->id])}}">Edit</a>
-                                    <button class="btn btn-outline-danger btn-sm" data-pesan="Apakah kamu yakin ingin menghapu deskripsi gunung {{$gunung->nama}}" data-url="{{route('admin.gunung.delete', ['id'=> $gunung])}}" data-redirect="{{route('admin.gunung')}}" id="hapus">
-                                        Hapus</button>
+                                    <button onClick="hapus('{{route('admin.gunung.delete', ['id'=> $gunung->id])}}', 'Berita yakin ingin dihapus')" class="btn btn-danger btn-sm">Hapus</button>
+                             
                                 </td>
                             </tr>
                             @endforeach

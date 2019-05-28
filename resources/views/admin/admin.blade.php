@@ -35,8 +35,8 @@
                                 <td><b>{{$user->username}}</b></td>
                                 <td class="text-center">
                                     <a class="btn btn-outline-secondary btn-sm" href="{{route('admin.user.edit', ['id'=>$user->id])}}">Edit</a>
-                                    <button class="btn btn-outline-danger btn-sm" data-pesan="Apakah kamu yakin ingin menghapu deskripsi user {{$user->username}}" data-url="{{route('admin.user.delete', ['id'=> $user->id])}}" data-redirect="{{route('admin.user')}}" id="hapus">
-                                        Hapus</button>
+
+                                    <button onClick="hapus('{{route('admin.user.delete', ['id'=> $user->id])}}', 'User Admin yakin ingin dihapus')" class="btn btn-danger btn-sm">Hapus</button>
                                 </td>
                             </tr>
                             @endforeach

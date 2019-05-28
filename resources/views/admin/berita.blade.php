@@ -30,7 +30,8 @@
                                         <p class="card-text">{{$berita->text_pembuka}}</p>
                                         <a href="{{route('admin.berita.show', ['id'=> $berita->id])}}" class="btn btn-outline-info btn-sm">Detail</a>
                                         <a href="{{route('admin.berita.edit', ['id'=> $berita->id])}}" class="btn btn-outline-secondary btn-sm">Edit</a>
-                                        <button class="btn btn-outline-danger btn-sm" data-pesan="Apakah kamu yakin ingin menghapu deskripsi berita {{$berita->judul}}" data-url="{{route('admin.berita.delete', ['id'=> $berita->id])}}" data-redirect="{{route('admin.berita')}}" id="hapus">Hapus</button>
+                                        <button onClick="hapus('{{route('admin.berita.delete', ['id'=> $berita->id])}}', 'Berita yakin ingin dihapus')" class="btn btn-danger btn-sm">Hapus</button>
+
                                     </div>
                                 </div>
                             @endforeach
