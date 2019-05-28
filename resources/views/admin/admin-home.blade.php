@@ -13,7 +13,7 @@
     </div>
   <div class="row">
       <div class="col-md-3 col-sm-12">
-          <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+          <div class="widget-small primary coloured-icon"><i class="icon fa fa-tasks fa-3x"></i>
             <div class="info">
               <h4>Gunung</h4>
               <p><b>{{$gunungs->count()}}</b></p>
@@ -22,7 +22,7 @@
         </div>
 
       <div class="col-md-3 col-sm-12">
-          <div class="widget-small info coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+          <div class="widget-small info coloured-icon"><i class="icon fa fa-newspaper-o fa-3x"></i>
             <div class="info">
               <h4>Berita</h4>
               <p><b>{{$beritas->count()}}</b></p>
@@ -31,19 +31,19 @@
       </div>
 
       <div class="col-md-3 col-sm-12">
-          <div class="widget-small danger coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+          <div class="widget-small danger coloured-icon"><i class="icon fa fa-tasks fa-3x"></i>
             <div class="info">
               <h4>Gunung Private</h4>
-              <p><b>{{$gunungs->where('status','Private')->count()}}</b></p>
+              <p><b>{{$gunungs->where('publish','Private')->count()}}</b></p>
             </div>
           </div>
       </div>
 
       <div class="col-md-3 col-sm-12">
-          <div class="widget-small warning coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+          <div class="widget-small warning coloured-icon"><i class="icon fa fa-newspaper-o fa-3x"></i>
             <div class="info">
               <h4>Berita Private</h4>
-              <p><b>{{$beritas->where('status','Private')->count()}}</b></p>
+              <p><b>{{$beritas->where('publish','Private')->count()}}</b></p>
             </div>
           </div>
       </div>
