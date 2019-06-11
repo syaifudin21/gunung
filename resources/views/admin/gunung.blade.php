@@ -48,6 +48,8 @@
                         </tbody>
                     </table>
 
+                    {{$gunungs->links()}}
+
                 </div>
 
             </div>

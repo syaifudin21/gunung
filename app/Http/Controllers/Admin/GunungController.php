@@ -15,7 +15,7 @@ class GunungController extends Controller
     }
     public function index()
     {
-        $gunungs = Gunung::all();
+        $gunungs = Gunung::paginate(20);
     	return view('admin.gunung', compact('gunungs'));
     }
 
