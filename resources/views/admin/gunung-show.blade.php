@@ -30,6 +30,7 @@
                         <p>{{$gunung->alamat}}</p>
                     <img src="{{asset($gunung->thumbnail)}}" style="max-width: 400px" class="rounded" alt="Icon Gunung" class="mr-3">
                     </div>
+                    <br>
                     {!!$gunung->deskripsi!!}
 
 
