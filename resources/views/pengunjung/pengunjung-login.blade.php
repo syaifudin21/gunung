@@ -12,7 +12,7 @@
   </head>
   <body>
     <section class="material-half-bg">
-      <div class="cover"></div>
+      <div class="cover" style="background-color: {{env('THEME_COLOR_2')}}"></div>
     </section>
     <section class="login-content">
       <div class="login-box" style="min-height: 420px;">
@@ -53,44 +53,44 @@
                 </span>
             @endif
           </div>
-          <br><br>
+          <div class="form-group text-center">
+             
+                <p class="semibold-text mb-0"><a href="#" data-toggle="flip"><i class="fa fa-angle-right fa-fw"></i> Daftar Pengjunjung</a></p>
+              </div>
           <div class="form-group btn-container">
             <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-sign-in fa-lg fa-fw"></i>{{ __('Login') }}</button>
           </div>
         </form>
         @endif
 
-        @if (Auth::guard('pengunjung')->check())
-        <div class="forget-form" ">
-
-        <div class="form-group text-center">
-          Anda Telah Masuk Sebagai Pengunjung, Silahkan Klik dibawah ini untuk menuju beranda pengunjung
-          <br><br>
-
-
-        <a href="{{route('pengunjung.home')}}" class="btn btn-primary">Beranda Pengunjung</a>
-
-        <br><br>
-        atau
-        <br><br>
-            <p class="semibold-text mb-0"><a href="#" data-toggle="flip"><i class="fa fa-angle-left fa-fw"></i> Daftar Pengjunjung</a></p>
-          </div>
-      </div>
-        @else
-        <form class="forget-form" method="POST" action="{{route('pengunjung.login')}}" aria-label="{{ __('Login Pengunjung') }}">
+        <form class="forget-form" method="POST" action="{{route('pengunjung.daftar')}}" aria-label="{{ __('Daftar Pengunjung') }}">
             @csrf
-            <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>Login Pengunjung</h3>
+            <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>Daftar Pengunjung</h3>
             <div class="form-group">
-              <label class="control-label">Username</label>
-              <input class="form-control{{ $errors->has('usernamePengunjung') ? ' is-invalid' : '' }}" type="text" placeholder="Email" name="usernamePengunjung" autofocus value="{{old('usernamePengunjung')}}">
-              @if ($errors->has('usernamePengunjung'))
+              <input class="form-control{{ $errors->has('nama') ? ' is-invalid' : '' }}" type="text" placeholder="Nama" name="nama" autofocus value="{{old('nama')}}">
+              @if ($errors->has('nama'))
                   <span class="invalid-feedback" role="alert">
-                      <strong>{{ $errors->first('usernamePengunjung') }}</strong>
+                      <strong>{{ $errors->first('nama') }}</strong>
                   </span>
               @endif
             </div>
             <div class="form-group">
-              <label class="control-label">Password</label>
+              <input class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" type="text" placeholder="Username" name="username" autofocus value="{{old('username')}}">
+              @if ($errors->has('username'))
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $errors->first('username') }}</strong>
+                  </span>
+              @endif
+            </div>
+            <div class="form-group">
+              <input class="form-control{{ $errors->has('alamat') ? ' is-invalid' : '' }}" type="text" placeholder="Alamat" name="alamat" autofocus value="{{old('alamat')}}">
+              @if ($errors->has('alamat'))
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $errors->first('alamat') }}</strong>
+                  </span>
+              @endif
+            </div>
+            <div class="form-group">
               <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" placeholder="Password" name="password">
               @if ($errors->has('password'))
                   <span class="invalid-feedback" role="alert">
@@ -99,20 +99,14 @@
               @endif
             </div>
             <div class="form-group">
-              <div class="utility">
-                <div class="animated-checkbox">
-                  <label>
-                    <input type="checkbox"><span class="label-text" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>Stay Signed in</span>
-                  </label>
-                </div>
+              <div class="text-center">
                   <p class="semibold-text mb-0"><a href="#" data-toggle="flip"><i class="fa fa-angle-left fa-fw"></i> Login Pengunjung</a></p>
               </div>
             </div>
             <div class="form-group btn-container">
-              <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-sign-in fa-lg fa-fw"></i>{{ __('Login') }}</button>
+              <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-sign-in fa-lg fa-fw"></i>{{ __('Daftar User Pengunjung') }}</button>
             </div>
         </form>
-        @endif
       </div>
     </section>
     <!-- Essential javascripts for application to work-->

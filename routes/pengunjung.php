@@ -2,6 +2,7 @@
 
 Route::get('/', 'Pengunjung\HomeController@index')->name('pengunjung.home');
 Route::get('/login', 'Pengunjung\LoginController@form');
+Route::post('/daftar', 'Pengunjung\LoginController@daftar')->name('pengunjung.daftar');
 Route::post('/login', 'Pengunjung\LoginController@login')->name('pengunjung.login');
 Route::post('/logout', 'Pengunjung\LoginController@logout')->name('pengunjung.logout');
 Route::get('/profil/{username}', 'Pengunjung\ProfilController@profil')->name('pengunjung.profil');

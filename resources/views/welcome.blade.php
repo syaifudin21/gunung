@@ -25,9 +25,9 @@
 						<p>Aplikasi Informasi Gunung Aktif yang Ada Diindonesia</p>
 						<nav>
 							<ul>
-								<li><a href="{{url('apk/download')}}" class="icon fa-mobile-phone"><span class="label">Aplikasi Android</span></a></li>
-								<li><a href="{{url('/admin')}}" class="icon fa-user"><span class="label">Admin</span></a></li>
-								<li><a href="{{url('/pengunjung')}}" class="icon fa-user"><span class="label">Pengunjung</span></a></li>
+								<li><a href="{{url('apk/download')}}" class="icon fa-mobile-phone">Download</a></li>
+								<li><a href="{{url('/admin')}}" class="icon fa-user">Admin</a></li>
+								<li><a href="{{url('/pengunjung')}}" class="icon fa-user-circle"> Pengunjung </a></li>
 							</ul>
 						</nav>
 					</header>

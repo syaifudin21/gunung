@@ -53,9 +53,9 @@
     <aside class="app-sidebar" style="background-color: {{env('THEME_COLOR_3')}}">
       <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{{asset(env('APP_LOGO'))}}" alt="User Image" style="max-height: 64px; max-width: 64px">
         <div>
-          <p class="app-sidebar__user-name">Admin</p>
+          <p class="app-sidebar__user-name">{{Auth::user()->nama}}</p>
 
-          <p class="app-sidebar__user-name"><small>Admin</small></p>
+          <p class="app-sidebar__user-name"><small>Pengunjung</small></p>
         </div>
       </div>
       <ul class="app-menu">
