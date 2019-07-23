@@ -4,6 +4,7 @@ Route::get('/', 'Pengunjung\HomeController@index')->name('pengunjung.home');
 Route::get('/login', 'Pengunjung\LoginController@form');
 Route::post('/login', 'Pengunjung\LoginController@login')->name('pengunjung.login');
 Route::post('/logout', 'Pengunjung\LoginController@logout')->name('pengunjung.logout');
+Route::get('/profil/{username}', 'Pengunjung\ProfilController@profil')->name('pengunjung.profil');
 
 Route::get('/gunung', 'Pengunjung\GunungController@index')->name('pengunjung.gunung');
 Route::get('/gunung/tambah', 'Pengunjung\GunungController@create')->name('pengunjung.gunung.create');

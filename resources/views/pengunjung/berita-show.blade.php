@@ -27,7 +27,7 @@
                     {!!$berita->berita!!}
             <div class="tile-footer">
                 Terakhir diupdate {{hari_tanggal_waktu($berita->updated_at, true)}}
-
+                @if (Auth::user('pengunjung')->id  == $berita->pengunjung_id)
                 <div class="btn-group float-right" role="group" aria-label="Basic example">
 
                     <a class="btn btn-outline-secondary mr-1 mb-1 btn-sm" href="{{route('pengunjung.berita.edit', ['id'=> $berita->id])}}">
@@ -35,6 +35,7 @@
                     <button class="btn btn-outline-danger mr-1 mb-1 btn-sm" data-pesan="Apakah kamu yakin ingin menghapu deskripsi berita {{$berita->judul}}" data-url="{{route('pengunjung.berita.delete', ['id'=> $berita->id])}}" data-redirect="{{route('pengunjung.gunung.show', ['id'=> $berita->gunung_id])}}" id="hapus">
                     <i class="fa fa-fire"></i>Hapus</button>
                 </div>
+                @endif
             </div>
             </div>
         </div>

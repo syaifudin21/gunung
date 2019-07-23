@@ -35,7 +35,7 @@
         @else
         <form class="login-form" method="post" action="{{route('admin.login')}}">
           @csrf
-          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>Login Ucssser Admin</h3>
+          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>Login User Admin</h3>
           <div class="form-group">
             <label class="control-label">Username</label>
             <input class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" type="text" placeholder="Email" name="username" autofocus value="{{old('username')}}">
@@ -140,14 +140,12 @@
       });
     </script>
 
-     @if(Session::has('alert'))
-
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+     
+    @if(Session::has('alert'))
+    <script src="{{asset('js/sweetalert.min.js')}}"></script>
     <script>
         swal({
-          title: '{{Session::get('title')}}',
-          text: '{{Session::get('text')}}',
-          icon:'{{Session::get('icon')}}',
+        {!!Session::get('alert')!!}
         });
     </script>
     @endif

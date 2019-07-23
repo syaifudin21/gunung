@@ -11,45 +11,6 @@
             <p>Selamat datang di dashboard Admin</p>
         </div>
     </div>
-  <div class="row">
-      <div class="col-md-3 col-sm-12">
-          <div class="widget-small primary coloured-icon"><i class="icon fa fa-tasks fa-3x"></i>
-            <div class="info">
-              <h4>Gunung</h4>
-              <p><b>{{$gunungs->count()}}</b></p>
-            </div>
-          </div>
-        </div>
-
-      <div class="col-md-3 col-sm-12">
-          <div class="widget-small info coloured-icon"><i class="icon fa fa-newspaper-o fa-3x"></i>
-            <div class="info">
-              <h4>Berita</h4>
-              <p><b>{{$beritas->count()}}</b></p>
-            </div>
-          </div>
-      </div>
-
-      <div class="col-md-3 col-sm-12">
-          <div class="widget-small danger coloured-icon"><i class="icon fa fa-tasks fa-3x"></i>
-            <div class="info">
-              <h4>Gunung Private</h4>
-              <p><b>{{$gunungs->where('publish','Private')->count()}}</b></p>
-            </div>
-          </div>
-      </div>
-
-      <div class="col-md-3 col-sm-12">
-          <div class="widget-small warning coloured-icon"><i class="icon fa fa-newspaper-o fa-3x"></i>
-            <div class="info">
-              <h4>Berita Private</h4>
-              <p><b>{{$beritas->where('publish','Private')->count()}}</b></p>
-            </div>
-          </div>
-      </div>
-
-  </div>
-
 
     <div class="row">
       <div class="col-md-6 col-sm-12">
@@ -79,9 +40,12 @@
               @foreach (App\Models\Berita::limit(5)->orderBy('updated_at','desc')->get() as $berita)
                   
                 <div class="media">
+                  <img src="{{asset($berita->lampiran)}}" class="mr-3" alt="" width="64px">
                   <div class="media-body">
-                    <a href="{{route('pengunjung.gunung.show', ['id'=>$berita->id])}}"><h5 class="mt-0">{{$berita->judul}}</h5></a>
+                    <a href="{{route('pengunjung.berita.show', ['id'=>$berita->id])}}"><h5 class="mt-0">{{$berita->judul}}</h5></a>
+                    <small>Oleh : {!!empty($berita->pengunjung_id)? 'Admin' : '<a href="'. route('pengunjung.profil', ['username'=> $berita->pengunjung->username]).'">'.$berita->pengunjung->nama.'</a>'!!}</small> <br>
                     {{$berita->text_pembuka}}
+                    
                   </div>
                 </div><br>
               @endforeach

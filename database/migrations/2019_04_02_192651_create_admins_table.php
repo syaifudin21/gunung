@@ -22,7 +22,7 @@ class CreateAdminsTable extends Migration
             $table->timestamps();
         });
         
-        DB::table('admins')->insert(['username'=>'admin', 'password'=>'121212']);
+        DB::table('admins')->insert(['username'=>'admin', 'password'=>bcrypt(121212)]);
     }
 
     /**

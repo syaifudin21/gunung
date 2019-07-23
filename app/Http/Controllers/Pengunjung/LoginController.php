@@ -32,7 +32,7 @@ class LoginController extends Controller
             return redirect()->intended(route('pengunjung.home'));
         }
 
-        return redirect()->back()->withInput($request->all());
+        return back()->with(['alert'=> "'title':'Gagal Login','text':'Kombinasi Username dan Password tidak sesuai', 'icon':'error'"])->withInput($request->only('username', 'remember'));
     }
 
     public function logout(Request $request)

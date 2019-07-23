@@ -23,7 +23,6 @@
           Anda Telah Masuk Sebagai Admin, Silahkan Klik dibawah ini untuk menuju beranda pengunjung
           <br><br>
 
-
         <a href="{{url('pengunjung')}}" class="btn btn-primary">Beranda Admin</a>
 
         <br><br>
@@ -131,14 +130,12 @@
       });
     </script>
 
-     @if(Session::has('alert'))
-
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    @if(Session::has('alert'))
+    <script src="{{asset('js/sweetalert.min.js')}}"></script>
     <script>
         swal({
-          title: '{{Session::get('title')}}',
-          text: '{{Session::get('text')}}',
-          icon:'{{Session::get('icon')}}',
+        {!!Session::get('alert')!!}
         });
     </script>
     @endif

@@ -32,14 +32,6 @@
 
             <div class="tile-footer">
                 Terakhir diupdate {{hari_tanggal_waktu($gunung->updated_at, true)}}
-
-                <div class="btn-group float-right" role="group" aria-label="Basic example">
-
-                    <a class="btn btn-outline-secondary mr-1 mb-1 btn-sm" href="{{route('pengunjung.gunung.edit', ['id'=> $gunung])}}">
-                    <i class="fa fa-edit"></i>Edit</a>
-                    <button class="btn btn-outline-danger mr-1 mb-1 btn-sm" data-pesan="Apakah kamu yakin ingin menghapu deskripsi gunung {{$gunung->nama}}" data-url="{{route('pengunjung.gunung.delete', ['id'=> $gunung])}}" data-redirect="{{route('pengunjung.gunung')}}" id="hapus">
-                    <i class="fa fa-fire"></i>Hapus</button>
-                </div>
             </div>
             </div>
         </div>

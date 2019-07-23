@@ -19,4 +19,15 @@ class Pengunjung extends Authenticatable
     {
         return $this->hasMany(Chat::class, 'pengunjung_id', 'id');
     }
+
+    public function komentar()
+    {
+        return $this->hasMany(KomentarBerita::class, 'pengunjung_id', 'id');
+    }
+
+    public function berita()
+    {
+        return $this->hasMany(Berita::class, 'pengunjung_id', 'id');
+    }
+    
 }
