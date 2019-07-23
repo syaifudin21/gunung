@@ -3,9 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\DB;
 
-class CreateAdminsTable extends Migration
+class CreateKomentarBeritasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,15 +13,14 @@ class CreateAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('komentar_beritas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->integer('berita_id');
+            $table->integer('pengunjung_id');
+            $table->text('komentar');
+            $table->enum('star',[1,2,3,4,5]);
             $table->timestamps();
         });
-        
-        DB::table('admins')->insert(['username'=>'admin', 'password'=>'121212']);
     }
 
     /**
@@ -32,6 +30,6 @@ class CreateAdminsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('komentar_beritas');
     }
 }

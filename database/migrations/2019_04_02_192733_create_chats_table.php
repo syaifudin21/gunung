@@ -15,10 +15,9 @@ class CreateChatsTable extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('berita_id');
-            $table->integer('pengunjung_id');
+            $table->integer('admin_id')->nullable();
+            $table->integer('pengunjung_id')->nullable();
             $table->text('chat');
-            $table->enum('status', ['Public', 'Block'])->default('Public');
             $table->timestamps();
         });
     }

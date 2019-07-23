@@ -16,11 +16,12 @@ class CreateBeritasTable extends Migration
         Schema::create('beritas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('gunung_id');
+            $table->integer('pengunjung_id')->nullable();
             $table->string('judul');
             $table->text('text_pembuka')->nullable();
             $table->text('berita');
             $table->text('lampiran')->nullable();
-            $table->enum('publish', ['Public', 'Private'])->default('Private');
+            $table->enum('publish', ['Public', 'Private', 'Pengajuan'])->default('Pengajuan');
             $table->timestamps();
         });
     }

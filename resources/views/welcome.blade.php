@@ -27,6 +27,7 @@
 							<ul>
 								<li><a href="{{url('apk/download')}}" class="icon fa-mobile-phone"><span class="label">Aplikasi Android</span></a></li>
 								<li><a href="{{url('/admin')}}" class="icon fa-user"><span class="label">Admin</span></a></li>
+								<li><a href="{{url('/pengunjung')}}" class="icon fa-user"><span class="label">Pengunjung</span></a></li>
 							</ul>
 						</nav>
 					</header>

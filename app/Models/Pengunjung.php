@@ -9,7 +9,7 @@ class Pengunjung extends Authenticatable
 {
     use Notifiable;
     protected $fillable = [
-        'username','password','alamat'
+        'nama','username','password','alamat'
     ];
     protected $hidden = [
         'password', 'remember_token',

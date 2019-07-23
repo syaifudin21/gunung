@@ -15,9 +15,10 @@ class CreatePengunjungsTable extends Migration
     {
         Schema::create('pengunjungs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nama');
             $table->string('username')->unique();
             $table->string('password');
-            $table->string('alamat');
+            $table->string('alamat')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

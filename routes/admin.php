@@ -31,3 +31,13 @@ Route::post('/user/tambah', 'Admin\UserController@store')->name('admin.user.stor
 Route::get('/user/edit/{id}', 'Admin\UserController@edit')->name('admin.user.edit');
 Route::put('/user/update', 'Admin\UserController@update')->name('admin.user.update');
 Route::delete('/user/delete/{id}', 'Admin\UserController@delete')->name('admin.user.delete');
+
+Route::get('/pengunjung', 'Admin\PengunjungController@index')->name('admin.pengunjung');
+Route::get('/pengunjung/publish', 'Admin\PengunjungController@publish')->name('admin.pengunjung.publish');
+Route::get('/pengunjung/tambah', 'Admin\PengunjungController@create')->name('admin.pengunjung.create');
+Route::get('/pengunjung/show/{id}', 'Admin\PengunjungController@show')->name('admin.pengunjung.show');
+Route::post('/pengunjung/tambah', 'Admin\PengunjungController@store')->name('admin.pengunjung.store');
+Route::get('/pengunjung/edit/{id}', 'Admin\PengunjungController@edit')->name('admin.pengunjung.edit');
+Route::put('/pengunjung/update', 'Admin\PengunjungController@update')->name('admin.pengunjung.update');
+Route::delete('/pengunjung/delete/{id}', 'Admin\PengunjungController@delete')->name('admin.pengunjung.delete');
+

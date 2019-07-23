@@ -7,8 +7,8 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{env('APP_NAME')}}">
     <meta property="og:title" content="{{env('APP_NAME')}}">
-    <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
-    <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
+    <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-pengunjung">
+    <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-pengunjung/hero-social.png">
     <meta property="og:description" content="{{env('APP_DESKRIPSI')}}">
     <title>{{env('APP_NAME')}}</title>
     <meta charset="utf-8">
@@ -24,8 +24,8 @@
   </head>
   <body class="app sidebar-mini rtl">
     <!-- Navbar-->
-  <header class="app-header" style="background-color: {{env('THEME_COLOR_1')}}#ff314e">
-    <a class="app-header__logo"  style="font-size: 12px;"  href="{{url('admin')}}">{{env('APP_NAME')}}</a>
+  <header class="app-header" style="background-color: {{env('THEME_COLOR_1')}}">
+    <a class="app-header__logo"  style="font-size: 12px;"  href="{{url('pengunjung')}}">{{env('APP_NAME')}}</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
@@ -39,9 +39,9 @@
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
             {{-- <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li> --}}
-            {{-- <li><a class="dropdown-item" href="{{ route('admin.profil') }}"><i class="fa fa-user fa-lg"></i> Profile</a></li> --}}
-            <li><a class="dropdown-item" href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-lg"></i>  {{ __('Logout') }}</a></li>
-            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
+            {{-- <li><a class="dropdown-item" href="{{ route('pengunjung.profil') }}"><i class="fa fa-user fa-lg"></i> Profile</a></li> --}}
+            <li><a class="dropdown-item" href="{{ route('pengunjung.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-lg"></i>  {{ __('Logout') }}</a></li>
+            <form id="logout-form" action="{{ route('pengunjung.logout') }}" method="POST">
                     {{ csrf_field() }}
             </form>
           </ul>
@@ -60,14 +60,12 @@
       </div>
       <ul class="app-menu">
 
-        <li><a class="app-menu__item {{(Request::is('admin'))? 'active': ''}}" href="{{route('admin.home')}}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        <li><a class="app-menu__item {{(Request::is('pengunjung'))? 'active': ''}}" href="{{route('pengunjung.home')}}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
 
-        <li><a class="app-menu__item {{(Request::is('admin/gunung') OR \Request::is('admin/gunung/*'))? 'active': ''}}" href="{{route('admin.gunung')}}"><i class="app-menu__icon fa fa-tasks"></i><span class="app-menu__label"> Gunung</span></a></li>
+        <li><a class="app-menu__item {{(Request::is('pengunjung/gunung') OR \Request::is('pengunjung/gunung/*'))? 'active': ''}}" href="{{route('pengunjung.gunung')}}"><i class="app-menu__icon fa fa-tasks"></i><span class="app-menu__label"> Gunung</span></a></li>
 
-        <li><a class="app-menu__item {{(Request::is('admin/berita') OR \Request::is('admin/berita/*'))? 'active': ''}}" href="{{route('admin.berita')}}"><i class="app-menu__icon fa fa-newspaper-o"></i><span class="app-menu__label"> Berita</span></a></li>
+        <li><a class="app-menu__item {{(Request::is('pengunjung/berita') OR \Request::is('pengunjung/berita/*'))? 'active': ''}}" href="{{route('pengunjung.berita')}}"><i class="app-menu__icon fa fa-newspaper-o"></i><span class="app-menu__label"> Berita</span></a></li>
 
-        <li><a class="app-menu__item {{(Request::is('admin/user') OR \Request::is('admin/user/*'))? 'active': ''}}" href="{{route('admin.user')}}"><i class="app-menu__icon fa fa-user-circle-o"></i><span class="app-menu__label"> User Admin</span></a></li>
-        <li><a class="app-menu__item {{(Request::is('admin/pengunjung') OR \Request::is('admin/pengunjung/*'))? 'active': ''}}" href="{{route('admin.pengunjung')}}"><i class="app-menu__icon fa fa-user-circle-o"></i><span class="app-menu__label"> User Pengunjung</span></a></li>
       </ul>
     </aside>
     @yield('content')

@@ -1,4 +1,4 @@
-@extends('admin.admin-template')
+@extends('pengunjung.pengunjung-template')
 @section('css')
 <link href="{{ asset('css/dropzone.css') }}" rel="stylesheet">
 <script src="{{ asset('js/dropzone.js') }}"></script>
@@ -15,11 +15,7 @@
             </div>
             </div>
 
-            <div class="toggle-flip">
-            <label>
-                <input type="checkbox" disabled  onchange="publish('{{$gunung->id}}')" {{($gunung->publish == 'Public')? 'checked' : '' }}  ><span class="flip-indecator" data-toggle-on="Public" data-toggle-off="Private"></span>
-            </label>
-            </div>
+             <div class="float-right">Status Publis : <b>{{$gunung->publish}}</b></div>
     </div>
 
     <div class="row justify-content-md-center">
@@ -39,9 +35,9 @@
 
                 <div class="btn-group float-right" role="group" aria-label="Basic example">
 
-                    <a class="btn btn-outline-secondary mr-1 mb-1 btn-sm" href="{{route('admin.gunung.edit', ['id'=> $gunung])}}">
+                    <a class="btn btn-outline-secondary mr-1 mb-1 btn-sm" href="{{route('pengunjung.gunung.edit', ['id'=> $gunung])}}">
                     <i class="fa fa-edit"></i>Edit</a>
-                    <button class="btn btn-outline-danger mr-1 mb-1 btn-sm" data-pesan="Apakah kamu yakin ingin menghapu deskripsi gunung {{$gunung->nama}}" data-url="{{route('admin.gunung.delete', ['id'=> $gunung])}}" data-redirect="{{route('admin.gunung')}}" id="hapus">
+                    <button class="btn btn-outline-danger mr-1 mb-1 btn-sm" data-pesan="Apakah kamu yakin ingin menghapu deskripsi gunung {{$gunung->nama}}" data-url="{{route('pengunjung.gunung.delete', ['id'=> $gunung])}}" data-redirect="{{route('pengunjung.gunung')}}" id="hapus">
                     <i class="fa fa-fire"></i>Hapus</button>
                 </div>
             </div>
@@ -80,7 +76,7 @@
             <div class="col-md-9 col-sm-12">
                 <div class="tile">
                     <h5>Riwayat / Berita tentang gunung
-                    <a href="{{route('admin.berita.create').'?gunung_id='.$gunung->id}}" class="btn btn-default btn-sm float-right">Tambah</a>
+                    <a href="{{route('pengunjung.berita.create').'?gunung_id='.$gunung->id}}" class="btn btn-default btn-sm float-right">Tambah</a>
                     </h5>
                     <br>
                         <table class="table table-sm">
@@ -99,8 +95,8 @@
                                         <td class="text-center">{{hari_tanggal_waktu($berita->created_at, true)}}</td>
                                         <td class="text-center">{{hari_tanggal_waktu($berita->updated_at, true)}}</td>
                                         <td class="text-center">
-                                            <a class="btn btn-secondary btn-sm" href="{{route('admin.berita.show', ['id'=> $berita->id])}}">Detail</a>
-                                            <a class="btn btn-outline-secondary btn-sm" href="{{route('admin.berita.edit', ['id'=>$berita->id])}}">Edit</a>
+                                            <a class="btn btn-secondary btn-sm" href="{{route('pengunjung.berita.show', ['id'=> $berita->id])}}">Detail</a>
+                                            <a class="btn btn-outline-secondary btn-sm" href="{{route('pengunjung.berita.edit', ['id'=>$berita->id])}}">Edit</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -114,13 +110,4 @@
 @endsection
 
 @section('script')
-<script src="{{asset('js/hapus.js')}}"></script>
-<script src="{{asset('js/hapusfunc.js')}}"></script>
-<script>
-    function publish(no) {
-        $.get('{{ route('admin.gunung.publish')}}?id='+no, function(response){
-            console.log(response);
-        });
-    }
-</script>
 @endsection
