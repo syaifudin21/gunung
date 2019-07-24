@@ -13,6 +13,7 @@ class PengunjungSeeder extends Seeder
     public function run()
     {
         $pengunjungs = [
+            array('nama'=> 'Pengunjung', 'username'=> 'pengunjung', 'password'=> bcrypt(121212), 'alamat'=> 'Alamat Pengunjung'),
             array('nama'=> 'Fuad Hilmi', 'username'=> 'fuadhilmi', 'password'=> bcrypt(121212), 'alamat'=> 'Alamat Fuad Hilmi'),
             array('nama'=> 'Hilmi Ramadhan', 'username'=> 'ramadhan', 'password'=> bcrypt(121212), 'alamat'=> 'Alamat Hilmi Ramadhan'),
             array('nama'=> 'Fulan', 'username'=> 'fulans', 'password'=> bcrypt(121212), 'alamat'=> 'Alamat Fulan'),

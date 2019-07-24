@@ -31,7 +31,7 @@ class LoginController extends Controller
 
         if (Auth::guard('pengunjung')->attempt($credential, false)){
             if($request->has('redirect')){
-                return redirect($request->redirect)->with(['alert'=> "'title':'Berhasil','text':'Data Berhasil Daftar', 'icon':'success','buttons': false, 'timer': 1200"]);
+                return redirect($request->redirect)->with(['alert'=> "'title':'Berhasil','text':'Data Berhasil Login', 'icon':'success','buttons': false, 'timer': 1200"]);
             }else{
                 return redirect(route('pengunjung.home'))->with(['alert'=> "'title':'Berhasil','text':'Data Berhasil Login', 'icon':'success','buttons': false, 'timer': 1200"]);
             }
@@ -75,6 +75,10 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::guard('pengunjung')->logout();
-        return redirect('/pengunjung');
+        if($request->redirect){
+            return back()->with(['alert'=> "'title':'Berhasil','text':'Berhasil Logout', 'icon':'success','buttons': false, 'timer': 1200"]);
+        }else{
+            return redirect('/pengunjung');
+        }
     }
 }

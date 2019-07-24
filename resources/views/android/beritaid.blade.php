@@ -33,6 +33,7 @@
                 </li>
                 <li class="media"><hr></li>
                     <form id="logout-form" action="{{ route('pengunjung.logout') }}" method="POST">
+                        <input type="hidden" name="redirect" value="{{url()->current()}}">
                         {{ csrf_field() }}
                     </form>
                 @else
