@@ -9,36 +9,37 @@
             <div style="padding: 30px 10px 50px 10px">
                 <div class="text-center" style="padding-bottom: 20px">
                     <h3>{{$berita->judul}}</h3>
-                    <small> Diterbitkan : {{hari_tanggal_waktu($berita->created_at, true)}} -  oleh : {{$berita->pengunjung->nama}}</small>
+                     Diterbitkan : {{hari_tanggal_waktu($berita->created_at, true)}} -  oleh : {{$berita->pengunjung->nama}}
                 </div>
                 <img src="{{asset($berita->lampiran)}}" alt="" width="100%">
                 <hr>
             </div>
-        </div>
-        <div class="col-md-9 col-sm-12"  style="min-height: 400px">
             {!!$berita->berita!!}
-        </div>
-        <div class="col-md-9 col-sm-12">
-                <div style="position: relative; bottom: 0px; padding-bottom: 25px">
             <hr>
                 <small> Terakhir diupdate {{hari_tanggal_waktu($berita->updated_at, true)}}</small>
-            </div>
-        </div>
-        <div class="col-md-9 col-sm-12">
-                <h1>{{Auth::check()}} dasfasd</h1>
-            @if (Auth::guard('pengunjung')->check())
+            <hr>
             <ul class="list-unstyled">
+                @auth
                 <li class="media">
-                    <i class="fa fa-user-o fa-3x mr-3"></i>
                 <div class="media-body">
                     <form action="{{route('pengunjung.komentar.store')}}" method="post">@csrf <input type="hidden" name="berita_id" value="{{$berita->id}}">
                         <textarea name="komentar" id="komentar" rows="2" placeholder="Isi Komentar" class="form-control mb-1"></textarea>
-                        <div class="float-right">
-                        <button type="submit" class="btn btn-primary btn-sm">Kirim</button>
+                        <div class="float-right"> <a href="#" class="btn btn-link btn-sm" style="text-decoration: none; color: black"> {{Auth::user()->nama}}</a> - <a class="btn btn-link btn-sm" href="{{ route('pengunjung.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                            
+                        <button type="submit" class="btn btn-primary btn-sm" style="min-width: 150px">Kirim</button>
                         </div>
                     </form>
                 </div>
                 </li>
+                <li class="media"><hr></li>
+                    <form id="logout-form" action="{{ route('pengunjung.logout') }}" method="POST">
+                        {{ csrf_field() }}
+                    </form>
+                @else
+                <li class="media">
+                    <a href="{{route('pengunjung.login').'?redirect='.url()->current()}}" class="btn btn-primary btn-block mb-4">Login</a>
+                </li>
+                @endauth
                 @foreach ($berita->komentar()->get() as $komentar)
                     <li class="media mb-3">
                     <i class="fa fa-address-book-o fa-2x mr-2"></i>
@@ -49,9 +50,7 @@
                     </li>
                 @endforeach
             </ul>
-            @else
-            <a href="{{route('pengunjung.login').'?redirect='.url()->current()}}" class="btn btn-primary btn-block mb-4">Login</a>
-            @endif
+            
         </div>
     
 </div>

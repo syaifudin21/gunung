@@ -20,9 +20,5 @@ Route::post('/upload/gambar', 'ImagesController@upload')->name('upload.gambar');
 Route::post('/galeri/store', 'ImagesController@store')->name('galeri.store');
 Route::delete('/galeri/delete/{id}', 'ImagesController@delete')->name('galeri.delete');
 
-Route::get('/berita/{id}', 'Android\HomeController@viewberita');
-Route::get('/gunung/{id}', 'Android\HomeController@viewgunung');
-
-
-Route::get('/login/view', 'Android\HomeController@login')->name('login.view');
-Route::post('/login/store', 'Android\HomeController@storelogin')->name('login.store');
+Route::get('/berita/{id}', 'Android\ViewController@viewberita')->name('beritaid');
+Route::get('/gunung/{id}', 'Android\HomeController@viewgunung')->name('gunungid');

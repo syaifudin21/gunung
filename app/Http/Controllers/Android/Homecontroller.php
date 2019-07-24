@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Berita;
 use App\Models\Gunung;
 use App\Http\Resources\GunungResource ;
+use Illuminate\Support\Facades\Auth;
 use DB;
 
 
@@ -52,6 +53,7 @@ class Homecontroller extends Controller
     }
     public function viewberita($id)
     {
+        dd(Auth::guard());
         $berita = Berita::findOrFail($id);
         return view('android.beritaid', compact('berita'));
     }
@@ -59,11 +61,6 @@ class Homecontroller extends Controller
     {
         $gunung = Gunung::findOrFail($id);
         return view('android.gunungid', compact('gunung'));
-    }
-    public function login()
-    {
-        $redirect = back();
-        return view('android.login', compact('redirect'));
     }
 
 }

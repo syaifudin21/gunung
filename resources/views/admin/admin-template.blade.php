@@ -81,7 +81,6 @@
     <script src="{{asset('js/plugins/pace.min.js')}}"></script>
     <!-- Page specific javascripts-->
 
-    <script src="{{asset('js/sweetalert.min.js')}}"></script>
 
     <!-- Google analytics script-->
     @yield('script')
@@ -100,6 +99,7 @@
     </script>
 
     @if(Session::has('alert'))
+    <script src="{{asset('js/sweetalert.min.js')}}"></script>
     <script>
         swal({
           {!!Session::get('alert')!!}

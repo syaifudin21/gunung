@@ -4,38 +4,35 @@
 @endsection
 @section('content')
 
-            <div class="row justify-content-md-center">
-            <div class="col-md-9 col-sm-12">
-                        <div class="text-center" style="padding-bottom: 20px">
-                            <h3>{{$gunung->nama}}</h3>
-                            <p>Status Gunung {{$gunung->status}} <br>{{$gunung->alamat}}</p>
+            
+<div class="row justify-content-md-center">
+    <div class="col-md-9 col-sm-12">
+        <div style="padding: 30px 10px 50px 10px">
+            <h3>{{$gunung->nama}}</h3>
+            <p>Status Gunung {{$gunung->status}} <br>{{$gunung->alamat}}</p>
 
-                            <div id="carouselExampleControls" style="height: 200px; overflow: hidden" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active" data-interval="100">
-                                            <img src="{{asset($gunung->thumbnail)}}" alt="...">
-                                        </div>
-                                        @foreach ($gunung->galeri()->get() as $i => $foto)
-                                            <div class="carousel-item"  data-interval="100">
-                                                <img src="{{asset($foto->foto)}}" class="d-block w-100" alt="...">
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                    </div>
+            <div id="carouselExampleControls" style="height: 200px; overflow: hidden" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-interval="100">
+                            <img src="{{asset($gunung->thumbnail)}}" alt="...">
                         </div>
-            </div>
-            <div class="col-md-9 col-sm-12"  style="min-height: 400px">
+                        @foreach ($gunung->galeri()->get() as $i => $foto)
+                            <div class="carousel-item"  data-interval="100">
+                                <img src="{{asset($foto->foto)}}" class="d-block w-100" alt="...">
+                            </div>
+                        @endforeach
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    </div>
                 {!!$gunung->deskripsi!!}
-            </div>
-            <div class="col-md-9 col-sm-12">
+            
                     <div style="position: relative; bottom: 0px; padding-bottom: 25px">
                 <hr>
                     <small> Terakhir diupdate {{hari_tanggal_waktu($gunung->updated_at, true)}}</small>
@@ -57,6 +54,7 @@
                     @endforeach
                 </div>
             @endif
+        </div>
 
         </div>
 
