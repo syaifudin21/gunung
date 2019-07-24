@@ -13,4 +13,7 @@ class KomentarBerita extends Model
     public function berita(){
         return $this->belongsTo(Berita::class, 'berita_id', 'id');
     }
+    public function pengunjung(){
+        return $this->belongsTo(Pengunjung::class, 'pengunjung_id', 'id');
+    }
 }

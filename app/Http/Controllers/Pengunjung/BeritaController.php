@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Berita;
 use Illuminate\Support\Facades\Auth;
+use App\Models\KomentarBerita;
 
 class BeritaController extends Controller
 {
@@ -105,6 +106,26 @@ class BeritaController extends Controller
             return response()->json(['kode'=>'00'], 200);
         }else{
             return response()->json(['kode'=>'01'], 200);
+        }
+    }
+    public function komentarstore(Request $request)
+    {
+        $this->validate($request, [
+            'komentar' => 'required|string',
+        ]);
+
+        $komentar = new KomentarBerita();
+        $komentar->fill($request->all());
+        $komentar['pengunjung_id'] = Auth::user()->id;
+        $komentar->save();
+
+        if($komentar){
+            return back()
+            ->with(['alert'=> "'title':'Berhasil','text':'Komentar berhasil dikirim', 'icon':'success','buttons': false, 'timer': 1200"]);
+        }else{
+            return back()
+            ->with(['alert'=> "'title':'Gagal Menyimpan','text':'Komentar gagal dikirim, periksa kembali data inputan', 'icon':'error'"])
+            ->withInput($request->all());
         }
     }
 }

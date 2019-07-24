@@ -22,11 +22,16 @@
         <div class="col-md-9 col-sm-12">
 			<div class="tile">
                     <div class="text-center">
-                        <h3>{{$berita->judul}}</h3>
+                        <h4>{{$berita->judul}}</h4>
+                        {{hari_tanggal_waktu($berita->updated_at, true)}} - Oleh : {!!empty($berita->pengunjung_id)? 'Admin' : '<a href="'. route('pengunjung.profil', ['username'=> $berita->pengunjung->username]).'">'.$berita->pengunjung->nama.'</a>'!!} <br><br>
+                        
+                        @if ($berita->lampiran != null)
+                        <img src="{{asset($berita->lampiran)}}" style="max-width: 400px" class="rounded" alt="Icon Gunung" class="mr-3"><br><br>
+                        @endif
+
                     </div>
                     {!!$berita->berita!!}
             <div class="tile-footer">
-                Terakhir diupdate {{hari_tanggal_waktu($berita->updated_at, true)}}
                 @if (Auth::user('pengunjung')->id  == $berita->pengunjung_id)
                 <div class="btn-group float-right" role="group" aria-label="Basic example">
 
@@ -36,11 +41,37 @@
                     <i class="fa fa-fire"></i>Hapus</button>
                 </div>
                 @endif
+
+
+                <ul class="list-unstyled">
+                    <li class="media">
+                        <i class="fa fa-user-o fa-3x mr-3"></i>
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">{{Auth::user()->nama}}</h5>
+                        <form action="{{route('pengunjung.komentar.store')}}" method="post">@csrf <input type="hidden" name="berita_id" value="{{$berita->id}}">
+                            <textarea name="komentar" id="komentar" rows="2" placeholder="Isi Komentar" class="form-control mb-1"></textarea>
+                            <div class="float-right">
+                            <button type="submit" class="btn btn-primary btn-sm">Kirim</button>
+                            </div>
+                        </form>
+                    </div>
+                    </li>
+                    @foreach ($berita->komentar()->get() as $komentar)
+                        <li class="media mb-3">
+                        <i class="fa fa-address-book-o fa-2x mr-2"></i>
+                          <div class="media-body">
+                                <h5 class="mt-0 mb-1"><a href="{{route('pengunjung.profil', ['username'=> $komentar->pengunjung->username])}}">{{$komentar->pengunjung->nama}}</a></h5>
+                                {{$komentar->komentar}}
+                          </div>
+                        </li>
+                    @endforeach
+                </ul>
+
             </div>
             </div>
         </div>
-
     </div>
+
 </main>
 
 @endsection

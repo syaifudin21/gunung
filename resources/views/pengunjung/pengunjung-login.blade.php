@@ -34,6 +34,9 @@
         @else
         <form class="login-form" method="post" action="{{route('pengunjung.login')}}">
           @csrf
+          @if (isset($_GET['redirect']))
+            <input type="hidden" name="redirect" value="{{$_GET['redirect']}}">
+          @endif
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>Login Pengunjung</h3>
           <div class="form-group">
             <label class="control-label">Username</label>
@@ -65,6 +68,9 @@
 
         <form class="forget-form" method="POST" action="{{route('pengunjung.daftar')}}" aria-label="{{ __('Daftar Pengunjung') }}">
             @csrf
+            @if (isset($_GET['redirect']))
+            <input type="hidden" name="redirect" value="{{$_GET['redirect']}}">
+            @endif
             <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>Daftar Pengunjung</h3>
             <div class="form-group">
               <input class="form-control{{ $errors->has('nama') ? ' is-invalid' : '' }}" type="text" placeholder="Nama" name="nama" autofocus value="{{old('nama')}}">

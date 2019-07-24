@@ -30,7 +30,11 @@ class LoginController extends Controller
         ];
 
         if (Auth::guard('pengunjung')->attempt($credential, false)){
-            return redirect()->intended(route('pengunjung.home'));
+            if($request->has('redirect')){
+                return redirect($request->redirect)->with(['alert'=> "'title':'Berhasil','text':'Data Berhasil Daftar', 'icon':'success','buttons': false, 'timer': 1200"]);
+            }else{
+                return redirect(route('pengunjung.home'))->with(['alert'=> "'title':'Berhasil','text':'Data Berhasil Login', 'icon':'success','buttons': false, 'timer': 1200"]);
+            }
         }
 
         return back()->with(['alert'=> "'title':'Gagal Login','text':'Kombinasi Username dan Password tidak sesuai', 'icon':'error'"])->withInput($request->only('username', 'remember'));
@@ -55,7 +59,11 @@ class LoginController extends Controller
 
         if($pengunjung){
             if (Auth::guard('pengunjung')->attempt($credential, false)){
-                return route('pengunjung.home')->with(['alert'=> "'title':'Berhasil','text':'Data Berhasil Daftar', 'icon':'success','buttons': false, 'timer': 1200"]);
+                if($request->has('redirect')){
+                    return redirect($request->redirect)->with(['alert'=> "'title':'Berhasil','text':'Data Berhasil Daftar', 'icon':'success','buttons': false, 'timer': 1200"]);
+                }else{
+                    return redirect(route('pengunjung.home'))->with(['alert'=> "'title':'Berhasil','text':'Data Berhasil Daftar', 'icon':'success','buttons': false, 'timer': 1200"]);
+                }
             }
         }else{
             return back()
@@ -67,6 +75,6 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::guard('pengunjung')->logout();
-        return redirect('/');
+        return redirect('/pengunjung');
     }
 }

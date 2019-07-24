@@ -23,3 +23,4 @@ Route::post('/berita/tambah', 'Pengunjung\BeritaController@store')->name('pengun
 Route::get('/berita/edit/{id}', 'Pengunjung\BeritaController@edit')->name('pengunjung.berita.edit');
 Route::put('/berita/update', 'Pengunjung\BeritaController@update')->name('pengunjung.berita.update');
 Route::delete('/berita/delete/{id}', 'Pengunjung\BeritaController@delete')->name('pengunjung.berita.delete');
+Route::post('/berita/komentar/tambah', 'Pengunjung\BeritaController@komentarstore')->name('pengunjung.komentar.store');

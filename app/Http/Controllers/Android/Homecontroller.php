@@ -60,5 +60,10 @@ class Homecontroller extends Controller
         $gunung = Gunung::findOrFail($id);
         return view('android.gunungid', compact('gunung'));
     }
+    public function login()
+    {
+        $redirect = back();
+        return view('android.login', compact('redirect'));
+    }
 
 }

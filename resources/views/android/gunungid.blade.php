@@ -1,18 +1,9 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@extends('android.android-template')
+@section('css')
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+@endsection
+@section('content')
 
-  </head>
-  <body>
-    <div class="container-fluid">
-
-            <br>
             <div class="row justify-content-md-center">
             <div class="col-md-9 col-sm-12">
                         <div class="text-center" style="padding-bottom: 20px">
@@ -76,34 +67,38 @@
     <script src="{{asset('js/jquery-3.3.1.slim.min.js')}}"></script>
     <script src="{{asset('js/popper.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script>
-            $(document).ready(function(){
-                $('.carousel').carousel()
-                console.log('as');
-                $('iframe').each(function () {
-                    var src = $(this).attr('src');
-                    var frame = '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="'+src+'" allowfullscreen></iframe></div>'
-                    $(this).before(frame);
-                    $(this).remove();
-                });
-                $('img').each(function () {
-                    var src = $(this).attr('src');
-                    var src = src.replace('http://localhost/gunung/', '{{env("APP_URL")}}');
-
-                    $(this).removeAttr("style");
-                    $(this).attr('width', '100%')
-                    $(this).attr('src', src)
-                });
-                $('.leading').each(function () {
-                    var src = $(this).attr('src');
-                    var src = src.replace('http://localhost/gunung/', '{{env("APP_URL")}}');
-
-                    $(this).removeAttr("style");
-                    $(this).attr('width', '90px')
-                    $(this).attr('src', src)
-                });
-            });
-
-    </script>
-  </body>
+    </body>
 </html>
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function(){
+        $('.carousel').carousel()
+        console.log('as');
+        $('iframe').each(function () {
+            var src = $(this).attr('src');
+            var frame = '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="'+src+'" allowfullscreen></iframe></div>'
+            $(this).before(frame);
+            $(this).remove();
+        });
+        $('img').each(function () {
+            var src = $(this).attr('src');
+            var src = src.replace('http://localhost/gunung/', '{{env("APP_URL")}}');
+
+            $(this).removeAttr("style");
+            $(this).attr('width', '100%')
+            $(this).attr('src', src)
+        });
+        $('.leading').each(function () {
+            var src = $(this).attr('src');
+            var src = src.replace('http://localhost/gunung/', '{{env("APP_URL")}}');
+
+            $(this).removeAttr("style");
+            $(this).attr('width', '90px')
+            $(this).attr('src', src)
+        });
+    });
+
+</script>
+@endsection
