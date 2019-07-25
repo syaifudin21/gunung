@@ -40,6 +40,7 @@
                     <button class="btn btn-outline-danger mr-1 mb-1 btn-sm" data-pesan="Apakah kamu yakin ingin menghapu deskripsi berita {{$berita->judul}}" data-url="{{route('pengunjung.berita.delete', ['id'=> $berita->id])}}" data-redirect="{{route('pengunjung.gunung.show', ['id'=> $berita->gunung_id])}}" id="hapus">
                     <i class="fa fa-fire"></i>Hapus</button>
                 </div>
+                <hr>
                 @endif
 
 
